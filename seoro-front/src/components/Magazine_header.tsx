@@ -1,7 +1,8 @@
-import { FiBarChart } from "react-icons/fi";
-import { FiBattery } from "react-icons/fi";
-import { FiWifi } from "react-icons/fi";
-import { FiChevronLeft } from "react-icons/fi";
+  import { FiBarChart } from "react-icons/fi";
+  import { FiBattery } from "react-icons/fi";
+  import { FiWifi } from "react-icons/fi";
+  import { FiChevronLeft } from "react-icons/fi";
+  import Link from "next/link";
 
 const Magazine_header=() => {
   return(
@@ -16,7 +17,9 @@ const Magazine_header=() => {
           </div>
         </div>
         <div className={'flex gap-x-[103px]'}>
-          <FiChevronLeft className={'text-[24px]'} />
+          <Link href="/magazine">
+            <FiChevronLeft className={'text-[24px]'} />
+          </Link>
           <div className={'text-[20px] font-semibold'}>Magazine</div>
         </div>
       </div>

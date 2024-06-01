@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Magazine_header from "@/components/Magazine_header";
 import { FiChevronDown } from "react-icons/fi";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +10,7 @@ const Magazine = () => {
     return (
         <>
             <div className={'bg-[#F0F0F5] min-h-screen'}>
+                
                 <Navbar></Navbar>
                 <div className={'flex flex-col gap-y-[17px]'}>
                     <Magazine_header></Magazine_header>

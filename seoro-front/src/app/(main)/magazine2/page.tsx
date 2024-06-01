@@ -134,14 +134,14 @@ const Magazine2 = () => {
                     </div> 
                   </div>
                 </div>  
-                <div className={'flex flex-col items-center border-t-[2px] gap-y-[19px] px-[20px] py-[20px] fixed bottom-[10px]'}>
+                <div className={'flex flex-col items-center border-t-[2px] bg-white gap-y-[19px] px-[20px] py-[20px] fixed bottom-[0px]'}>
                   <div className={'flex gap-x-[130px] items-center px-[16px] w-[335px] h-[53px] bg-[#F4F5F7] rounded-[30px]'}>
                     <div className={'text-[14px] text-[#9E9FA1]'}>댓글을 남겨주세요</div>
                     <div className={'w-[56px] h-[37px] rounded-[999px] bg-[#8D8DC1]'}>
                       <div className={'text-[14px] text-[#FFFDFD] px-[13px] py-[8px]'}>등록</div>
                     </div>
                   </div>
-                  <hr className="w-[134px] rounded-[100px] border-[3.5px] border-black" />
+                  <hr className="w-[134px] rounded-[100px] border-[3.5px] border-black ]" />
                 </div>
             </div>
         </>
