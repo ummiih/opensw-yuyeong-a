@@ -1,10 +1,9 @@
-  import { FiBarChart } from "react-icons/fi";
-  import { FiBattery } from "react-icons/fi";
-  import { FiWifi } from "react-icons/fi";
-  import { FiChevronLeft } from "react-icons/fi";
-  import Link from "next/link";
+import { FiBarChart } from "react-icons/fi";
+import { FiBattery } from "react-icons/fi";
+import { FiWifi } from "react-icons/fi";
+import { FiChevronLeft } from "react-icons/fi";
 
-const Magazine_header=() => {
+const Answer_header=() => {
   return(
     <>
       <div className={'flex flex-col gap-y-[13px] px-[22px] py-[14px] text-white bg-[#8D8DC1] rounded-b-[20px] w-full h-[104px]'}>
@@ -17,14 +16,12 @@ const Magazine_header=() => {
           </div>
         </div>
         <div className={'flex gap-x-[103px]'}>
-          <Link href="/magazine">
-            <FiChevronLeft className={'text-[24px]'} />
-          </Link>
-          <div className={'text-[20px] font-semibold'}>Magazine</div>
+          <FiChevronLeft className={'text-[24px]'} />
+          <div className={'text-[20px] font-semibold'}>글쓰기</div>
         </div>
       </div>
     </>
   )
 }
 
-export default Magazine_header;
+export default Answer_header;

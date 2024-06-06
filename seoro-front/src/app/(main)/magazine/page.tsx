@@ -1,12 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Magazine_header from "@/components/Magazine_header";
 import { FiChevronDown } from "react-icons/fi";
+
 import Image from "next/image";
+import Link from "next/link";
 
 const Magazine = () => {
+
     return (
         <>
             <div className={'bg-[#F0F0F5] min-h-screen'}>
+                
                 <Navbar></Navbar>
                 <div className={'flex flex-col gap-y-[17px]'}>
                     <Magazine_header></Magazine_header>
@@ -15,7 +19,8 @@ const Magazine = () => {
                             <div className={'text-[13px] text-[#727375]'}>최신순</div>
                             <FiChevronDown />
                         </div>
-                        <div className={'overflow-y-scroll flex flex-col gap-y-[20px] px-[3px]'} style={{ maxHeight: '2000px' }}>
+                        <div className={'overflow-y-scroll flex flex-col gap-y-[20px] px-[3px]'} style={{ maxHeight: '700px' }}>
+                            <Link href="/magazine2">
                             <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
                                 <div className={'flex flex-col gap-y-[19px]'}>
                                     <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
@@ -23,7 +28,9 @@ const Magazine = () => {
                                 </div>
                                 <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
                             </div>
+                            </Link>
 
+                            <Link href="/magazine2">
                             <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
                                 <div className={'flex flex-col gap-y-[19px]'}>
                                     <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
@@ -31,7 +38,9 @@ const Magazine = () => {
                                 </div>
                                 <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
                             </div>
+                            </Link>
 
+                            <Link href="/magazine2">
                             <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
                                 <div className={'flex flex-col gap-y-[19px]'}>
                                     <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
@@ -39,7 +48,9 @@ const Magazine = () => {
                                 </div>
                                 <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
                             </div>
+                            </Link>
 
+                            <Link href="/magazine2">
                             <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
                                 <div className={'flex flex-col gap-y-[19px]'}>
                                     <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
@@ -47,7 +58,9 @@ const Magazine = () => {
                                 </div>
                                 <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
                             </div>
+                            </Link>
 
+                            <Link href="/magazine2">
                             <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
                                 <div className={'flex flex-col gap-y-[19px]'}>
                                     <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
@@ -55,6 +68,7 @@ const Magazine = () => {
                                 </div>
                                 <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
                             </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
