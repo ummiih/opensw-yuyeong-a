@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Magazine_header from "@/components/Magazine_header";
 import { FiChevronDown } from "react-icons/fi";
-
+import { FiPlus } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 
 const Magazine = () => {
+    
 
     return (
         <>
@@ -13,6 +14,12 @@ const Magazine = () => {
                 
                 <Navbar></Navbar>
                 <div className={'flex flex-col gap-y-[17px]'}>
+                    <button className="flex absolute bottom-[113px] right-[20px] items-center px-[15px] gap-x-[2px] bg-[#6969B1] rounded-[999px] w-[97px] y-[40px] text-white">
+                        <FiPlus />
+                        <div>글쓰기</div>
+                    </button>
+                
+                    
                     <Magazine_header></Magazine_header>
                     <div className={'flex flex-col gap-y-[17px] px-[17px]'}>
                         <div className={'flex items-center px-[12px] py-[3.5px] gap-x-[5px] bg-white rounded-[999px] w-[88px] h-[28px]'}>
