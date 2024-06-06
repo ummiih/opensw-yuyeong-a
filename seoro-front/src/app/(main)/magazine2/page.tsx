@@ -3,8 +3,17 @@ import { FiHeart } from "react-icons/fi";
 import { FiMoreVertical } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import Image from "next/image";
+import { useState } from 'react';
+import Link from "next/link";
 
 const Magazine2 = () => {
+
+    function handleClick(){
+      
+    }
+  
+    
+  
     return (
         <>
             <div>
@@ -43,10 +52,11 @@ const Magazine2 = () => {
                       <div className={'text-[12px] text-[#727375]'}>3</div>
                     </div>
                   </div>
-                  <div className={'w-[90px] h-[32px] rounded-[999px] border-[#727375] flex gap-x-[4px] py-[5px]'}>
+                  <button className={'w-[90px] h-[32px] rounded-[999px] border-[#727375] flex items-center gap-x-[4px] py-[5px]' }>
                     <FiHeart className={'text-[#727375] w-15 h-13'}/>
-                    <div className={'text-[#727375] text-[14px]'}>좋아요</div>
-                  </div>          
+                    <span className={'text-[#727375] text-[14px]'}>좋아요</span>
+                  </button>
+        
                 </div>     
                 <hr className=" border-gray-300" />
                 <div>
@@ -135,12 +145,11 @@ const Magazine2 = () => {
                   </div>
                 </div>  
                 <div className={'flex flex-col items-center border-t-[2px] bg-white gap-y-[19px] px-[20px] py-[20px] fixed bottom-[0px]'}>
-                  <div className={'flex gap-x-[130px] items-center px-[16px] w-[335px] h-[53px] bg-[#F4F5F7] rounded-[30px]'}>
-                    <div className={'text-[14px] text-[#9E9FA1]'}>댓글을 남겨주세요</div>
-                    <div className={'w-[56px] h-[37px] rounded-[999px] bg-[#8D8DC1]'}>
-                      <div className={'text-[14px] text-[#FFFDFD] px-[13px] py-[8px]'}>등록</div>
-                    </div>
-                  </div>
+                <div className="flex gap-x-[130px] items-center px-[16px] w-[335px] h-[53px] bg-[#F4F5F7] rounded-[30px]">
+                  <input className="text-[14px] text-[#9E9FA1] bg-[#F4F5F7] outline-none w-full" placeholder="댓글을 남겨주세요" />
+                  <button className="w-[100px] h-[37px] rounded-[999px] bg-[#8D8DC1] text-[14px] text-[#FFFDFD] px-[13px] py-[8px]">등록</button>
+                </div>
+
                   <hr className="w-[134px] rounded-[100px] border-[3.5px] border-black ]" />
                 </div>
             </div>
