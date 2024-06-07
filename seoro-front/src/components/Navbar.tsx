@@ -21,8 +21,8 @@ const Navbar = () => {
                         router.push('/home')
                     }}
                     className={'flex flex-col items-center gap-y-[6px] w-[51px] h-[52px]'}>
-                    <FiHome className={query === '/home' ? 'text-black w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
-                    <div className={query === '/home' ? 'text-black text-[12px]' : 'text-[#9E9FA1] text-[12px]'}>홈</div>
+                    <FiHome className={query === '/home' ? 'text-[#54515F] w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
+                    <div className={query === '/home' ? 'text-[#54515F] text-[12px]' : 'text-[#9E9FA1] text-[12px]'}>홈</div>
                 </div>
                 {/*메거진*/}
                 <div
@@ -31,8 +31,8 @@ const Navbar = () => {
                         router.push('/magazine')
                     }}
                     className={'flex flex-col items-center gap-y-[6px] w-[51px] h-[52px]'}>
-                    <FiClipboard className={query === '/magazine' ? 'text-black w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
-                    <div className={query === '/magazine' ? 'text-black text-[12px]' : 'text-[#9E9FA1] text-[12px]'}>메거진</div>
+                    <FiClipboard className={query === '/magazine' ? 'text-[#54515F] w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
+                    <div className={query === '/magazine' ? 'text-[#54515F] text-[12px]' : 'text-[#9E9FA1] text-[12px]'}>메거진</div>
                 </div>
                 {/*퀴즈*/}
                 <div
@@ -41,8 +41,8 @@ const Navbar = () => {
                         router.push('/quiz')
                     }}
                     className={'flex flex-col items-center gap-y-[6px] w-[51px] h-[52px]'}>
-                    <FiCheckSquare className={query === '/quiz' ? 'text-black w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
-                    <div className={query === '/quiz' ? 'text-black text-[12px]' : 'text-[#9E9FA1] text-[12px]'}>퀴즈</div>
+                    <FiCheckSquare className={query === '/quiz' ? 'text-[#54515F] w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
+                    <div className={query === '/quiz' ? 'text-[#54515F] text-[12px]' : 'text-[#9E9FA1] text-[12px]'}>퀴즈</div>
                 </div>
                 {/*마이페이지*/}
                 <div
@@ -51,8 +51,8 @@ const Navbar = () => {
                         router.push('/mypage')
                     }}
                     className={'flex flex-col items-center gap-y-[6px] w-[51px] h-[52px]'}>
-                    <FiUser className={query === '/mypage' ? 'text-black w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
-                    <div className={query === '/mypage' ? 'text-black text-[11px]' : 'text-[#9E9FA1] text-[11px]'}>마이페이지</div>
+                    <FiUser className={query === '/mypage' ? 'text-[#54515F] w-[24px] h-[24px]' : 'text-[#9E9FA1] w-[24px] h-[24px]'}/>
+                    <div className={query === '/mypage' ? 'text-[#54515F] text-[11px]' : 'text-[#9E9FA1] text-[11px]'}>마이페이지</div>
                 </div>
             </div>
         </>
