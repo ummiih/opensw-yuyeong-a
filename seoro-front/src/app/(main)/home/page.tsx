@@ -30,8 +30,8 @@ const Home = () => {
                         <div className={'flex flex-col gap-y-4 p-5 bg-white rounded-[32px]'}>
                             <div className={'font-semibold'}>Q. 생리시 관계를 하면 임신이 되지 않는다?</div>
                             <div className={'flex gap-x-4'}>
-                                <button className={'p-6 w-full bg-red-200 rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md hover:scale-105 transform duration-150'}>X</button>
-                                <button className={'p-6 w-full bg-blue-200 rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md hover:scale-105 transform duration-150'}>O</button>
+                                <button className={'p-6 w-full bg-red-200 rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>X</button>
+                                <button className={'p-6 w-full bg-blue-200 rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>O</button>
                             </div>
                         </div>
                     </div>

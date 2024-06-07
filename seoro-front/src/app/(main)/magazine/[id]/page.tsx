@@ -5,6 +5,7 @@ import {SVGProps, useState} from "react";
 import Header from "@/components/magazine/Header";
 import Image from "next/image";
 import CommentInput from "@/components/magazine/CommentInput";
+import Commnet from "@/components/magazine/Commnet";
 
 const ArticleDetail = () => {
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(false);
@@ -63,11 +64,15 @@ const ArticleDetail = () => {
             </div>
             <div className={'h-[10px] bg-gray-100'}/>
             {/* comment */}
-            <CommentInput />
-            <div>
 
-
+            <div className={'flex flex-col gap-y-[48px] px-5 py-4'}>
+                <Commnet />
+                <Commnet />
+                <Commnet />
+                <Commnet />
             </div>
+            <div className={'h-[80px]'}/>
+            <CommentInput />
         </div>
     );
 }
@@ -112,3 +117,4 @@ const WhiteHeartIcon = (props: SVGProps<SVGSVGElement>) => (
         </defs>
     </svg>
 );
+
