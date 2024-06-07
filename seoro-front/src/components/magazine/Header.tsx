@@ -1,11 +1,15 @@
 import * as React from "react";
 import type { SVGProps } from "react";
 
-const Header = () => {
+interface Props {
+    title: string;
+}
+const Header = (props: Props) => {
+    const {title} = props
     return (
         <div className={'flex gap-x-24 items-center w-full h-[100px] bg-[#8D8DC1] rounded-b-[30px] px-5 py-5 shadow-lg'}>
             <Icon className={'flex justify-start'}></Icon>
-            <div className={'text-[20px] font-semibold text-white'}>Magazine</div>
+            <div className={'text-[20px] font-semibold text-white'}>{title}</div>
         </div>
     )
 }
