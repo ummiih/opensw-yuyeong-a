@@ -1,86 +1,53 @@
+'use client';
+
+import Header from "@/components/magazine/Header";
+import ArticlePost from "@/components/magazine/ArticlePost";
 import Navbar from "@/components/Navbar";
-import Magazine_header from "@/components/Magazine_header";
-import { FiChevronDown } from "react-icons/fi";
-import { FiPlus } from "react-icons/fi";
-import Image from "next/image";
-import Link from "next/link";
+import * as React from "react";
+import {SVGProps, useState} from "react";
+import {FilterType} from "@/types/magazine/type";
+import Filter from "@/components/magazine/Filter";
+import {filterContents} from "@/utils/magazine/filterContents";
 
 const Magazine = () => {
-    
-
+    const [isFilterClicked, setIsFilterClicked] = useState<boolean>(false);
+    const [filterContent, setFilterContent] = useState<FilterType>('최신순');
     return (
-        <>
-            <div className={'bg-[#F0F0F5] min-h-screen'}>
-                
-                <Navbar></Navbar>
-                <div className={'flex flex-col gap-y-[17px]'}>
-                    <button className="flex absolute bottom-[113px] right-[20px] items-center px-[15px] gap-x-[2px] bg-[#6969B1] rounded-[999px] w-[97px] y-[40px] text-white">
-                        <FiPlus />
-                        <div>글쓰기</div>
-                    </button>
-                
-                    
-                    <Magazine_header></Magazine_header>
-                    <div className={'flex flex-col gap-y-[17px] px-[17px]'}>
-                        <div className={'flex items-center px-[12px] py-[3.5px] gap-x-[5px] bg-white rounded-[999px] w-[88px] h-[28px]'}>
-                            <div className={'text-[13px] text-[#727375]'}>최신순</div>
-                            <FiChevronDown />
-                        </div>
-                        <div className={'overflow-y-scroll flex flex-col gap-y-[20px] px-[3px]'} style={{ maxHeight: '700px' }}>
-                            <Link href="/magazine2">
-                            <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
-                                <div className={'flex flex-col gap-y-[19px]'}>
-                                    <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
-                                    <div  className={'text-[14px] text-[#727375]'}>생리 기간만 다가오면 유독 짜증이 나고, 예민하다면 월경전 증후군 때문이에요. 이는 주로</div>
-                                </div>
-                                <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
-                            </div>
-                            </Link>
-
-                            <Link href="/magazine2">
-                            <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
-                                <div className={'flex flex-col gap-y-[19px]'}>
-                                    <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
-                                    <div  className={'text-[14px] text-[#727375]'}>생리 기간만 다가오면 유독 짜증이 나고, 예민하다면 월경전 증후군 때문이에요. 이는 주로</div>
-                                </div>
-                                <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
-                            </div>
-                            </Link>
-
-                            <Link href="/magazine2">
-                            <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
-                                <div className={'flex flex-col gap-y-[19px]'}>
-                                    <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
-                                    <div  className={'text-[14px] text-[#727375]'}>생리 기간만 다가오면 유독 짜증이 나고, 예민하다면 월경전 증후군 때문이에요. 이는 주로</div>
-                                </div>
-                                <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
-                            </div>
-                            </Link>
-
-                            <Link href="/magazine2">
-                            <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
-                                <div className={'flex flex-col gap-y-[19px]'}>
-                                    <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
-                                    <div  className={'text-[14px] text-[#727375]'}>생리 기간만 다가오면 유독 짜증이 나고, 예민하다면 월경전 증후군 때문이에요. 이는 주로</div>
-                                </div>
-                                <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
-                            </div>
-                            </Link>
-
-                            <Link href="/magazine2">
-                            <div className={'flex items-center px-[19px] gap-x-[13px] bg-white rounded-[20px] w-[335px] h-[137px]'}>
-                                <div className={'flex flex-col gap-y-[19px]'}>
-                                    <div className={'text-[16px] text-[#54515F] font-semibold'}>생리 중 예민한 이유는?... </div>
-                                    <div  className={'text-[14px] text-[#727375]'}>생리 기간만 다가오면 유독 짜증이 나고, 예민하다면 월경전 증후군 때문이에요. 이는 주로</div>
-                                </div>
-                                <Image src={'./next.svg'} alt={'./next.svg'} width={83} height={81} ></Image>
-                            </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+        <div className={'bg-[#DFDFED] min-h-screen flex flex-col gap-y-4'}>
+            <Header title={'Magazine'}/>
+            {/* 필터 */}
+            <div
+                onClick={() => {
+                    setIsFilterClicked(!isFilterClicked);
+                }}
+                className={'relative mx-5 flex items-center gap-x-2 bg-white rounded-full w-fit px-3 py-[5px]'}>
+                <div className={'text-[#727375] text-[14px]'}>{filterContent}</div>
+                <Icon />
             </div>
-        </>
+            { isFilterClicked ? <Filter filterContents={filterContents} setFilterContent={setFilterContent} setIsFilterClicked={setIsFilterClicked}/> : null }
+            <div className={'px-5 flex flex-col gap-y-4'}>
+                <ArticlePost />
+                <ArticlePost />
+                <ArticlePost />
+                <ArticlePost />
+            </div>
+            <Navbar></Navbar>
+        </div>
     )
 }
 export default Magazine;
+
+const Icon = (props: SVGProps<SVGSVGElement>) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={10}
+        height={6}
+        fill="none"
+        {...props}
+    >
+        <path
+            fill="#727375"
+            d="M4.293 5.293.707 1.707C.077 1.077.523 0 1.414 0h7.172c.89 0 1.337 1.077.707 1.707L5.707 5.293a1 1 0 0 1-1.414 0"
+        />
+    </svg>
+);

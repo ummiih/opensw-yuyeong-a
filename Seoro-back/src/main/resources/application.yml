@@ -1,0 +1,27 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/seoro?useSSL=false&allowPublicKeyRetrieval=true
+    username: mysqluser
+    password: mysqlpw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+            format_sql: true
+            default_batch_fetch_size: 100
+
+  cloud:
+    gcp:
+      storage:
+
+        url: https://storage.googleapis.com/${BUCKET_NAME}/
+        credentials:
+          encoded-key: ${GCS_KEY}
+        project-id: ${GCP_PROJECT_ID}
+        bucket: ${BUCKET_NAME}
