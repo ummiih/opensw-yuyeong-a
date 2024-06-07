@@ -11,10 +11,6 @@ const Navbar = () => {
     const router = useRouter();
     const query = usePathname();
 
-    useEffect(() => {
-        console.log('query', query)
-    }, [query]);
-
     return (
         <>
             <div className={'fixed bottom-0 w-full flex justify-between bg-white rounded-t-[20px] px-5 py-4 shadow-md'}>

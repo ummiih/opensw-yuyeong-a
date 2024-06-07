@@ -8,6 +8,7 @@ import {SVGProps, useState} from "react";
 import {FilterType} from "@/types/magazine/type";
 import Filter from "@/components/magazine/Filter";
 import {filterContents} from "@/utils/magazine/filterContents";
+import WriteButton from "@/components/magazine/WriteButton";
 
 const Magazine = () => {
     const [isFilterClicked, setIsFilterClicked] = useState<boolean>(false);
@@ -31,6 +32,7 @@ const Magazine = () => {
                 <ArticlePost />
                 <ArticlePost />
             </div>
+            <WriteButton />
             <Navbar></Navbar>
         </div>
     )
