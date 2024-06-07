@@ -14,7 +14,7 @@ const Magazine = () => {
     const [filterContent, setFilterContent] = useState<FilterType>('최신순');
     return (
         <div className={'bg-[#DFDFED] min-h-screen flex flex-col gap-y-4'}>
-            <Header />
+            <Header title={'Magazine'}/>
             {/* 필터 */}
             <div
                 onClick={() => {
