@@ -12,7 +12,7 @@ const Home = () => {
     const router = useRouter();
     return (
         <>
-            <div className={'bg-[#F0F0F5] min-h-screen'}>
+            <div className={'bg-[#DFDFED] min-h-screen'}>
                 <Header />
                 <div className={'flex flex-col gap-y-8 p-5'}>
                     {/* 오늘의 퀴즈 */}
