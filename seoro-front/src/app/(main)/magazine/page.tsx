@@ -5,6 +5,7 @@ import * as React from "react";
 import type { SVGProps } from "react";
 
 const Magazine = () => {
+
     return (
         <div className={'bg-[#DCDCF4] min-h-screen flex flex-col gap-y-4'}>
             <Header />
