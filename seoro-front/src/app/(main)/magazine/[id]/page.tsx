@@ -4,12 +4,13 @@ import * as React from "react";
 import {SVGProps, useState} from "react";
 import Header from "@/components/magazine/Header";
 import Image from "next/image";
+import CommentInput from "@/components/magazine/CommentInput";
 
 const ArticleDetail = () => {
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(false);
 
     return (
-        <div className={'min-h-screen'}>
+        <div className={'relative min-h-screen'}>
             <Header title={'Magazine'}></Header>
             <div className={'flex flex-col gap-y-4 px-5 py-4'}>
                 {/*  title, date, writer */}
@@ -62,8 +63,10 @@ const ArticleDetail = () => {
             </div>
             <div className={'h-[10px] bg-gray-100'}/>
             {/* comment */}
+            <CommentInput />
             <div>
-                
+
+
             </div>
         </div>
     );
