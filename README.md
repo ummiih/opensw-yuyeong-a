@@ -15,7 +15,14 @@
    - 양성에 대한 퀴즈를 풀며 서로의 성에 대해 이해할 수 있는 기능이다.
   
 # 시연 영상
-https://github.com/ummiih/opensw-yuyeonga/assets/156565796/a41d07dd-b5fe-4a0f-9670-286e843b0480
+
+### 로그인
+https://github.com/ummiih/opensw-yuyeonga/assets/156565796/016e6e3a-2605-4c1d-991d-12cda99d4c03
+
+### 퀴즈
+
+
+
 
 
 
