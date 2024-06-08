@@ -64,7 +64,7 @@ const WriteMagazine = () => {
 
     return (
         <form onSubmit={handleSubmit} className={'min-h-screen relative'}>
-            <Header title={'글쓰기'}></Header>
+            <Header title={'글쓰기'} rightElement={<EmptyIcon />}></Header>
             <div className={'p-5 flex flex-col gap-y-5'}>
                 <div className={'flex flex-col gap-y-5'}>
                     <div className={'text-[#727375]'}>제목 <span className={'text-[#8D8DC1]'}>*</span></div>
@@ -136,5 +136,29 @@ const Icon = (props: SVGProps<SVGSVGElement>) => (
             fill="#9E9FA1"
             d="M21.512 8.276a.933.933 0 1 0 0-1.867.933.933 0 0 0 0 1.867M10.638.378H5.342a.88.88 0 0 0-.875.875c0 .478.396.875.875.875h5.296a.88.88 0 0 0 .875-.876.88.88 0 0 0-.875-.874"
         />
+    </svg>
+);
+
+
+const EmptyIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={32}
+        height={32}
+        fill="none"
+        {...props}
+    >
+        <mask
+            id="a"
+            width={32}
+            height={32}
+            x={0}
+            y={0}
+            maskUnits="userSpaceOnUse"
+            style={{
+                maskType: "alpha",
+            }}
+        >
+        </mask>
     </svg>
 );

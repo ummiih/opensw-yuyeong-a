@@ -1,6 +1,9 @@
 import Image from "next/image";
+import {useRecoilValue} from "recoil";
+import {userInfoAtom} from "@/recoil/atom";
 
 const Header = () => {
+    const userInfo = useRecoilValue(userInfoAtom)
     return (
         <>
             <div className='flex flex-col gap-y-[5px] bg-[#8D8DC1] rounded-b-[30px] p-[20px] shadow-md'>
@@ -14,7 +17,7 @@ const Header = () => {
                     {/*내용물*/}
                     <div className={'flex flex-col gap-y-[7px]'}>
                         <div className={'text-[28px] font-semibold text-white'}>안녕하세요,</div>
-                        <div className={'text-[26px] font-semibold text-white'}>황유림님</div>
+                        <div className={'text-[26px] font-semibold text-white'}>{userInfo.nickName}님</div>
                         <div className={'text-[14px] text-white'}>오늘도 ‘서로’와 함께 서로 알아가봐요!</div>
                     </div>
                 </div>

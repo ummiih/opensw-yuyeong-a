@@ -1,9 +1,22 @@
-import {SVGProps} from "react";
+import {useEffect} from "react";
 interface Props {
+    setCorrectCount?: React.Dispatch<React.SetStateAction<number>>;
+    clickedAnswer: boolean
+    content: string;
+    answer: boolean;
+    sequence: number;
     setIsQuizCardClicked: React.Dispatch<React.SetStateAction<boolean>>;
+    setSequence?: React.Dispatch<React.SetStateAction<number>>;
 }
 const QuizCard = (props: Props) => {
-    const {setIsQuizCardClicked} = props;
+    const {setCorrectCount, sequence, clickedAnswer, content, answer, setIsQuizCardClicked, setSequence} = props;
+
+    useEffect(() => {
+        if (clickedAnswer === answer && setCorrectCount) {
+            setCorrectCount((prevState) => prevState + 1);
+        }
+    }, [sequence, clickedAnswer, answer, setCorrectCount]);
+
     return (
         <div
             className={
@@ -12,39 +25,18 @@ const QuizCard = (props: Props) => {
             {/* 카드내용 */}
             <div className={'flex flex-col justify-center items-center gap-y-5 bg-white p-5 rounded-[32px]'}>
                 <div className={'flex flex-col justify-center items-center'}>
-                    <div className={'font-semibold'}>Q. 생리시 성관계를 하면 임신이 되지 않는다?</div>
-                    <div className={'text-[100px]'}>X</div>
-                    <div className={'text-[14px]'}>확률이 떨어질지언정 임신이 안되는 것은 아니에요. 성관계중에는 질 주변이 약해진 상태이기 때문에 위생적으로 감염될 확률이
-                        높아서 여성에게 안좋은 영향을 줄 수 있습니다.
-                    </div>
+                    <div className={'font-semibold'}>{content}</div>
+                    <div className={'text-[100px]'}>{answer ? 'O' : 'X'}</div>
+                    {clickedAnswer === answer ? (<div className={'text-[#6283FD]'}>정답입니다!</div>) : (<div className={'text-[#FF6A3B]'}>오답입니다 ㅠㅠ</div>)}
                 </div>
-                <button className={'text-white bg-[#8D8DC1] py-2 w-full rounded-[12px]'}>다음</button>
+                <button
+                    onClick={()=>{
+                        setSequence ? setSequence((prevState) => prevState + 1) : null
+                        setIsQuizCardClicked(false);
+                    }}
+                    className={'text-white bg-[#8D8DC1] py-2 w-full rounded-[12px]'}>다음</button>
             </div>
         </div>
     );
 }
 export default QuizCard;
-
-const CancelIcon = (props: SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={25} height={24} fill="none" {...props}>
-        <mask
-            id="a"
-            width={25}
-            height={24}
-            x={0}
-            y={0}
-            maskUnits="userSpaceOnUse"
-            style={{
-                maskType: 'alpha',
-            }}>
-            <path fill="#D9D9D9" d="M.646 0h24v24h-24z" />
-        </mask>
-        <g mask="url(#a)">
-            <path
-                fill="#fff"
-                d="M12.646 12.708 7.4 17.954a.5.5 0 0 1-.345.15.47.47 0 0 1-.363-.15.5.5 0 0 1-.16-.354.5.5 0 0 1 .16-.354L11.938 12 6.692 6.754a.5.5 0 0 1-.15-.344.47.47 0 0 1 .15-.364.5.5 0 0 1 .354-.16.5.5 0 0 1 .354.16l5.246 5.246 5.246-5.246a.5.5 0 0 1 .344-.15.47.47 0 0 1 .364.15.5.5 0 0 1 .16.354.5.5 0 0 1-.16.354L13.353 12l5.247 5.246a.5.5 0 0 1 .15.344.47.47 0 0 1-.15.364.5.5 0 0 1-.354.16.5.5 0 0 1-.354-.16z"
-            />
-        </g>
-    </svg>
-);
-

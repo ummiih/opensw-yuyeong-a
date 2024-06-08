@@ -43,7 +43,7 @@ const ArticleDetail = () => {
                     setIsCommentMoreOptionModalOpen={setIsCommentMoreOptionModalOpen}
                     isCommentMoreOptionModalOpen={isCommentMoreOptionModalOpen}/>
                 : null}
-            <Header title={'Magazine'}></Header>
+            <Header path={'/magazine'} title={'Magazine'} rightElement={<EmptyIcon/>}></Header>
             <div className={'flex flex-col gap-y-4 px-5 py-4'}>
                 {/*  title, date, writer */}
                 <div className={'flex justify-between items-start'}>
@@ -156,3 +156,25 @@ const WhiteHeartIcon = (props: SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const EmptyIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={32}
+        height={32}
+        fill="none"
+        {...props}
+    >
+        <mask
+            id="a"
+            width={32}
+            height={32}
+            x={0}
+            y={0}
+            maskUnits="userSpaceOnUse"
+            style={{
+                maskType: "alpha",
+            }}
+        >
+        </mask>
+    </svg>
+);
