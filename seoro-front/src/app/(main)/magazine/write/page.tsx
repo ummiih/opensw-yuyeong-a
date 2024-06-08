@@ -3,53 +3,87 @@ import Header from "@/components/magazine/Header";
 import {useRouter} from "next/navigation";
 
 import * as React from "react";
-import {SVGProps, useRef, useState} from "react";
+import {FormEvent, SVGProps, useRef, useState} from "react";
 import Image from "next/image";
+import { useRecoilValue} from "recoil";
+import {userInfoAtom} from "@/recoil/atom";
+import {postArticle} from "@/lib/api/magazine/magazine";
 
 
 const WriteMagazine = () => {
     const router = useRouter();
-    const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-    const [imageUrlList, setImageUrlList] = useState<File[]>([]);
     const imgRef = useRef<HTMLInputElement>(null);
-    /**
-     * 이미지 업로드 및 미리보기 함수
-     */
-    const saveImgFile = async () => {
+    const [uploadImage, setUploadImage] = useState();
+    const userInfo = useRecoilValue(userInfoAtom);
+
+    // 이미지 미리보기 설정
+    const handleImagePreview = async () => {
         const files = imgRef.current?.files;
-        if (!files) return;
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onloadend = () => {
+            setUploadImage(reader.result);
+        };
+    };
 
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const reader = new FileReader();
+    // 폼 제출 핸들러
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault(); // 폼 제출 시 새로고침 방지
+        const formData = new FormData();
 
-            reader.onloadend = () => {
-                setImagePreviews((prevImagePreviews) => [...prevImagePreviews, reader.result as string]);
-            };
-            reader.readAsDataURL(file);
+        formData.append('imageFile', imgRef.current.files[0]); // 파일을 formData에 추가
 
-            setImageUrlList((prevImageUrlList) => [...prevImageUrlList, file]);
+        const json = {
+            userId: userInfo.userId,
+            title: e.target.title.value,
+            content: e.target.content.value,
+        };
+
+        formData.append(
+            'writeArticleRequest',
+            new Blob([JSON.stringify(json)], {
+                type: 'application/json',
+            }),
+        );
+
+        // formData의 내용을 출력하는 코드
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+        try {
+            await postArticle(formData).then((response)=>{
+                console.log('글쓰기',response)
+                router.push('/magazine')
+            }); // API 호출
+
+        } catch (error) {
+            console.error('폼 제출 중 오류 발생:', error);
         }
     };
 
     return (
-        <div className={'min-h-screen relative'}>
+        <form onSubmit={handleSubmit} className={'min-h-screen relative'}>
             <Header title={'글쓰기'}></Header>
             <div className={'p-5 flex flex-col gap-y-5'}>
                 <div className={'flex flex-col gap-y-5'}>
                     <div className={'text-[#727375]'}>제목 <span className={'text-[#8D8DC1]'}>*</span></div>
                     <input
+                        id="title"
+                        name="title"
                         placeholder={'제목을 입력해주세요.'}
-                        className={'w-full py-[14px] px-3 rounded-[12px] border-[1px] border-[#E4E5E7] placeholder:text-[#9E9FA1]'}></input>
+                        className={'w-full py-[14px] px-3 rounded-[12px] border-[1px] border-[#E4E5E7] placeholder:text-[#9E9FA1] outline-none'}></input>
 
                     <div className={'text-[#727375]'}>내용 <span className={'text-[#8D8DC1]'}>*</span></div>
                     <textarea
-                        placeholder={'제목을 입력해주세요.'}
-                        className={'w-full h-[200px] py-[14px] px-3 rounded-[12px] border-[1px] border-[#E4E5E7] placeholder:text-[#9E9FA1]'}></textarea>
+                        id="content"
+                        name="content"
+                        placeholder={'내용을 입력해주세요.'}
+                        className={'w-full h-[200px] py-[14px] px-3 rounded-[12px] border-[1px] border-[#E4E5E7] placeholder:text-[#9E9FA1] outline-none'}></textarea>
 
                 </div>
-                <div className={'flex gap-x-2 '}>
-                    <div className={'rounded-[8px] p-2 bg-[#F4F5F7] w-fit'}>
+                <div className={'flex gap-x-2'}>
+                    <div className={'rounded-[8px] p-2 bg-[#F4F5F7] w-fit h-10'}>
                         <label htmlFor="image">
                             <Icon/>
                         </label>
@@ -59,31 +93,25 @@ const WriteMagazine = () => {
                             id="image"
                             name="image"
                             ref={imgRef}
-                            onChange={saveImgFile}
+                            onChange={handleImagePreview}
                             multiple
                             style={{display: 'none'}}></input>
                     </div>
                     <div className={'w-[375px] flex items-center overflow-x-scroll gap-x-3'}>
-                        {imagePreviews?.map((img, i) => {
-                            return (
-                                <div key={i} className={'relative rounded-[8px]'}>
-                                    <div className={'relative rounded-[8px] w-[80px] h-[80px] overflow-hidden'}>
-                                        <Image key={i} src={img} fill alt={img} className={'object-cover'}></Image>;
-                                    </div>
-                                </div>
-                            );
-                        })}
+                        <div className={'relative rounded-[8px] w-[80px] h-[80px] overflow-hidden'}>
+                            {uploadImage ?
+                                <Image src={uploadImage} alt={uploadImage} className={'object-cover'} fill></Image> : null}
+                        </div>
                     </div>
                 </div>
             </div>
+
             <button
-                onClick={() => {
-                    router.push('/magazine')
-                }}
+                type={'submit'}
                 className={'absolute bottom-[8px] right-[20px] left-[20px] bg-[#8D8DC1] rounded-[12px] text-white py-4 text-[14px]'}>작성
                 완료
             </button>
-        </div>
+        </form>
     )
 }
 export default WriteMagazine;

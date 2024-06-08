@@ -1,15 +1,18 @@
 'use client';
 
 import * as React from "react";
-import type { SVGProps } from "react";
+import {SVGProps, useEffect} from "react";
 
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import {useRouter} from "next/navigation";
 import ArticlePost from "@/components/magazine/ArticlePost";
+import {useRecoilState} from "recoil";
+import {userInfoAtom} from "@/recoil/atom";
 
 const Home = () => {
     const router = useRouter();
+
     return (
         <>
             <div className={'bg-[#DFDFED] min-h-screen'}>
