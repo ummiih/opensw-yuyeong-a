@@ -1,5 +1,4 @@
 import { client } from "@/lib/axios";
-import {SignUpType} from "@/types/common/type";
 
 export const postUserSignUp = async (data: FormData) => {
     try {

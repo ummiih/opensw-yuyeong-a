@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { FiHeart } from "react-icons/fi";
 import * as React from "react";
-import type { SVGProps } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import {useRouter} from "next/navigation";
 
@@ -28,10 +27,12 @@ const ArticlePost = (props: Props) => {
             <div className={'flex flex-col gap-y-2'}>
                 <div className={'text-[16px] font-semibold text-black'}>{title}</div>
                 <div className={'flex justify-between gap-x-3'}>
-                    <div className={'flex flex-col'}>
-                        <div>{content}</div>
+                    <div className={'w-[50%]'}>
+                        <div className={'line-clamp-2'}>{content}</div>
                     </div>
-                    <Image src={imageUrl} alt={imageUrl} width={100} height={80}/>
+                    <div className={'relative w-[80px] h-[80px]'}>
+                        <Image src={imageUrl} alt={imageUrl} fill className={'object-cover'}/>
+                    </div>
                 </div>
             </div>
             <div className={'flex gap-x-2'}>
@@ -48,22 +49,3 @@ const ArticlePost = (props: Props) => {
     )
 }
 export default ArticlePost;
-
-const CommentIcon = (props: SVGProps<SVGSVGElement>) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={12}
-        height={12}
-        fill="none"
-        {...props}
-    >
-        <path
-            fill="#727375"
-            d="M6.003.75c2.896 0 5.252 1.905 5.252 4.25S8.899 9.25 6.003 9.25c-.046 0-.086 0-.13-.005h-.116s-.02-.005-.03-.005a.75.75 0 0 0-.67.415l-.8 1.595L2.91 8.56a.8.8 0 0 0-.255-.29C1.441 7.455.746 6.265.746 5 .75 2.655 3.105.75 6.002.75m0-.75C2.686 0 0 2.24 0 5c0 1.575.875 2.98 2.24 3.895l1.346 2.69c.14.275.406.415.67.415.266 0 .536-.14.671-.415l.8-1.595c.09 0 .18.01.27.01C9.314 10 12 7.76 12 5S9.319 0 6.003 0"
-        />
-        <path
-            fill="#9E9FA1"
-            d="M8.197 5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M6.1 5.565a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M4.002 5.565a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"
-        />
-    </svg>
-);
