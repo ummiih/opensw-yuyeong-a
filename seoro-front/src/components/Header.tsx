@@ -11,17 +11,18 @@ const Header = () => {
                 <div className={'text-white'}>4월 10일 수요일</div>
 
                 {/*안에 내용물*/}
-                <div className={'flex gap-x-[16px] items-center'}>
-                    {/*이미지*/}
-                    <Image src={'/profile.png'} alt={'/profile.png'} width={83} height={83}/>
-                    {/*내용물*/}
-                    <div className={'flex flex-col gap-y-[7px]'}>
-                        <div className={'text-[28px] font-semibold text-white'}>안녕하세요,</div>
-                        <div className={'text-[26px] font-semibold text-white'}>{userInfo.nickName}님</div>
-                        <div className={'text-[14px] text-white'}>오늘도 ‘서로’와 함께 서로 알아가봐요!</div>
+                {/*이미지*/}
+                <div className={'flex gap-x-5'}>
+                    <div className={'relative w-[80px] h-[80px]'}>
+                        <Image src={userInfo.profileImageUrl} alt={userInfo.profileImageUrl} fill className={' object-cover rounded-full'}/>
                     </div>
+                {/*내용물*/}
+                <div className={'flex flex-col'}>
+                    <div className={'text-[28px] font-semibold text-white'}>안녕하세요,</div>
+                    <div className={'text-[26px] font-semibold text-white'}>{userInfo.nickName}님</div>
+                    <div className={'text-[14px] text-white'}>오늘도 ‘서로’와 함께 서로 알아가봐요!</div>
                 </div>
-
+                </div>
             </div>
         </>
     )

@@ -12,6 +12,7 @@ import {useRecoilState, useRecoilValue} from "recoil";
 import {userInfoAtom} from "@/recoil/atom";
 import CommentMoreOptionModal from "@/components/magazine/CommentMoreOptionModal";
 import {deleteCommentIdAtom} from "@/recoil/magazine/atom";
+import {putClickedLikeButton} from "@/lib/api/magazine/magazine";
 
 const ArticleDetail = () => {
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(false);
@@ -20,7 +21,7 @@ const ArticleDetail = () => {
     const userInfo = useRecoilValue(userInfoAtom);
     const query = useParams();
 
-    const {article} = useGetArticleDetail(query.id);
+    const {article, mutate} = useGetArticleDetail(query.id);
 
     const formatDate = (dateString: string | undefined) => {
         const date = new Date(dateString ? dateString : 0);
@@ -80,7 +81,9 @@ const ArticleDetail = () => {
                         </div>
                     </div>
                     <button
-                        onClick={() => {
+                        onClick={async () => {
+                            await putClickedLikeButton(query.id)
+                            await mutate();
                             setIsLikeButtonClicked(!isLikeButtonClicked);
                         }}
                         className={isLikeButtonClicked ? 'flex gap-x-1 items-center w-fit rounded-full px-3 py-1 text-white text-[14px] bg-[#8D8DC1]' : 'flex gap-x-1 items-center w-fit rounded-full px-3 py-1 text-[#727375] text-[14px] border-[1px] border-[#E4E5E7]'}>

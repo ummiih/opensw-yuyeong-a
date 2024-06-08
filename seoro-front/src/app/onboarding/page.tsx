@@ -15,7 +15,6 @@ const OnBoarding = () => {
 
     return (
         <div className={'p-5 flex flex-col justify-center min-h-screen bg-[#EEEDF5]'}>
-
             <div className={'flex flex-col gap-y-5'}>
                 <input
                     onChange={(e)=>{
