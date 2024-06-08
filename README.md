@@ -19,11 +19,16 @@
 ### 로그인
 https://github.com/ummiih/opensw-yuyeonga/assets/156565796/016e6e3a-2605-4c1d-991d-12cda99d4c03
 
-### 글 작성
+### 홈
+https://github.com/ummiih/opensw-yuyeonga/assets/156565796/61417003-aff7-4baa-814b-38da25a4470f
 
+### 게시글
+https://github.com/ummiih/opensw-yuyeonga/assets/156565796/b0fc696b-1455-4d72-a68b-1a22b918bfb9
+
+### 글 작성
+https://github.com/ummiih/opensw-yuyeonga/assets/156565796/4126ee42-0ec1-447c-8fdc-c5b5dd56adce
 
 ### 퀴즈
-
 https://github.com/ummiih/opensw-yuyeonga/assets/156565796/f5588bb5-985c-4324-a5f2-db0d7d2d59e5
 
 
