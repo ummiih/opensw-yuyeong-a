@@ -50,13 +50,13 @@ const Home = () => {
                                         setIsQuizCardClicked(!isQuizCardClicked)
                                         setIsClickedAnswer(false)
                                     }}
-                                    className={'p-6 w-full bg-[#FFE8DE] rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>X</button>
+                                    className={'p-6 h-[130px] w-full bg-[#FFE8DE] rounded-[24px] text-[#3C3C3C] text-[40px] shadow-md'}>X</button>
                                 <button
                                     onClick={()=>{
                                         setIsQuizCardClicked(!isQuizCardClicked)
                                         setIsClickedAnswer(true)
                                     }}
-                                    className={'p-6 w-full bg-[#D8EAFF] rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>O</button>
+                                    className={'p-6 w-full bg-[#D8EAFF] rounded-[24px] text-[#3C3C3C] text-[40px] shadow-md'}>O</button>
                             </div>
                         </div>
                     </div>

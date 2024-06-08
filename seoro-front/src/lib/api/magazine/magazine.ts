@@ -29,6 +29,18 @@ export const postArticleComment = async (articleId: string| string[], data: Comm
     }
 };
 
+export const putClickedLikeButton = async (articleId: string| string[]) => {
+    try {
+        const response = await client.put(`/api/articles/${articleId}/like`);
+        // 성공적인 응답 처리
+        return response.data;
+
+    } catch (error) {
+        // 에러 처리
+        console.error("좋아요 put 에러 발생:", error);
+    }
+};
+
 export const deleteArticleComment = async (articleId: string| string[], commentId: number) => {
     try {
         const response = await client.delete(`/api/articles/${articleId}/comments/${commentId}`);

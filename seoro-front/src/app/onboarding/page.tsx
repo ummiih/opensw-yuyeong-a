@@ -7,6 +7,7 @@ import {useRecoilState} from "recoil";
 import {userInfoAtom, userSignInInfoAtom} from "@/recoil/atom";
 import {getUserSignIn} from "@/lib/api/onboarding/onboarding";
 import {UserType} from "@/types/magazine/type";
+import Image from "next/image";
 
 const OnBoarding = () => {
     const router = useRouter();
@@ -15,7 +16,7 @@ const OnBoarding = () => {
 
     return (
         <div className={'p-5 flex flex-col justify-center min-h-screen bg-[#EEEDF5]'}>
-
+            <Image src={'/seoroLogo.png'} width={50} height={50} alt={'/seoroLogo.png'}></Image>
             <div className={'flex flex-col gap-y-5'}>
                 <input
                     onChange={(e)=>{

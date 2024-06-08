@@ -19,7 +19,7 @@ export const userInfoAtom = atom<UserType>({
         username: "string",
         nickName: "string",
         password: "string",
-        profileImageUrl: "string",
+        profileImageUrl: '/profile.png',
         createdAt: "string",
         modifiedAt: "string",
     },
