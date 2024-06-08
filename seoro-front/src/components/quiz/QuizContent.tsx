@@ -1,21 +1,29 @@
 import * as React from "react";
 import type { SVGProps } from "react";
 import {useRouter} from "next/navigation";
-const QuizContent = () => {
+
+interface Props {
+    title: string;
+    quizId: number;
+}
+
+const QuizContent = (props: Props) => {
     const router = useRouter();
+    const {title, quizId} = props;
+
     return (
         <div className={'flex flex-col gap-y-1 rounded-[24px] bg-white p-5 shadow-md '}>
-            <div className={'font-semibold text-[#54515F]'}>남자친구 어디까지 알고 계신가요?</div>
+            <div className={'font-semibold text-[#54515F]'}>{title}</div>
             <div className={'flex justify-between items-end'}>
                 <button
                     onClick={()=>{
-                       router.push('/quiz/1')
+                       router.push(`/quiz/${quizId}`)
                     }}
                     className={'flex items-center text-[24px] font-semibold text-[#54515F]'}>
                     퀴즈 풀러가기
                     <ArrowIcon />
                 </button>
-                <div className={'font-semibold text-[#54515F]'}>5 문제</div>
+                <div className={'font-semibold text-[#54515F]'}>{5} 문제</div>
             </div>
         </div>
     );

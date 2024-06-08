@@ -1,15 +1,19 @@
 import * as React from "react";
 import type {ReactNode, SVGProps} from "react";
+import {useRouter} from "next/navigation";
 
 interface Props {
     title: string;
     rightElement?: ReactNode;
 }
 const Header = (props: Props) => {
+    const router = useRouter();
     const {title, rightElement} = props
     return (
         <div className={'flex justify-between items-center w-full h-[100px] bg-[#8D8DC1] rounded-b-[30px] px-5 py-5 shadow-lg'}>
-            <Icon className={'flex justify-start'}></Icon>
+            <Icon onClick={()=>{
+                router.back();
+            }} className={'flex justify-start'}></Icon>
             <div className={'text-[20px] font-semibold text-white'}>{title}</div>
             {rightElement ? rightElement : <EmptyIcon/>}
         </div>

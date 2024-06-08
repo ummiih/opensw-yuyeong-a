@@ -11,21 +11,21 @@ import {filterContents} from "@/utils/magazine/filterContents";
 import WriteButton from "@/components/magazine/WriteButton";
 import useGetArticleDetail from "@/lib/hooks/useGetArticleDetail";
 import useGetArticles from "@/lib/hooks/useGetArticles";
+import {useRouter} from "next/navigation";
 
 const Magazine = () => {
     const [isFilterClicked, setIsFilterClicked] = useState<boolean>(false);
     const [filterContent, setFilterContent] = useState<FilterType>('최신순');
     const {articles} = useGetArticles();
-
+    const router = useRouter();
 
     useEffect(() => {
         console.log('articles',articles)
     }, [articles]);
 
-
     return (
-        <div className={'bg-[#DFDFED] min-h-screen flex flex-col gap-y-4'}>
-            <Header title={'Magazine'}/>
+        <div className={'bg-[#EEEDF5] min-h-screen flex flex-col gap-y-4'}>
+            <Header title={'Magazine'} rightElement={<EmptyIcon/>}/>
             {/* 필터 */}
             <div
                 onClick={() => {
@@ -72,3 +72,27 @@ const Icon = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 );
+
+const EmptyIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={32}
+        height={32}
+        fill="none"
+        {...props}
+    >
+        <mask
+            id="a"
+            width={32}
+            height={32}
+            x={0}
+            y={0}
+            maskUnits="userSpaceOnUse"
+            style={{
+                maskType: "alpha",
+            }}
+        >
+        </mask>
+    </svg>
+);
+

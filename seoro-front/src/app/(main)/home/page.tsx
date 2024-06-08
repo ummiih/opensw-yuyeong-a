@@ -1,21 +1,33 @@
 'use client';
 
 import * as React from "react";
-import {SVGProps, useEffect} from "react";
+import {SVGProps, useEffect, useState} from "react";
 
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import {useRouter} from "next/navigation";
 import ArticlePost from "@/components/magazine/ArticlePost";
-import {useRecoilState} from "recoil";
-import {userInfoAtom} from "@/recoil/atom";
-
+import useGetArticleDetail from "@/lib/hooks/useGetArticleDetail";
+import QuizCard from "@/components/quiz/QuizCard";
+import useGetQuizQuestions from "@/lib/hooks/useGetQuizQuestions";
 const Home = () => {
     const router = useRouter();
+    const {article} = useGetArticleDetail('1');
+    const [isClickedAnswer, setIsClickedAnswer] = useState(false);
+    const [isQuizCardClicked, setIsQuizCardClicked] = useState(false);
+    const {quizQuestions} = useGetQuizQuestions('1');
 
     return (
-        <>
-            <div className={'bg-[#DFDFED] min-h-screen'}>
+        <div>
+            {isQuizCardClicked ?
+                <QuizCard
+                    content={quizQuestions? quizQuestions[0].content : ''}
+                    setIsQuizCardClicked={setIsQuizCardClicked}
+                    sequence={quizQuestions? quizQuestions[0].questionId.sequence : 0}
+                    answer={quizQuestions? quizQuestions[0].answer : false}
+                    clickedAnswer={isClickedAnswer}/>
+                : null}
+            <div className={'bg-[#EEEDF5] min-h-screen'}>
                 <Header />
                 <div className={'flex flex-col gap-y-8 p-5'}>
                     {/* 오늘의 퀴즈 */}
@@ -31,10 +43,20 @@ const Home = () => {
                         </div>
                         {/* content */}
                         <div className={'flex flex-col gap-y-4 p-5 bg-white rounded-[32px]'}>
-                            <div className={'font-semibold'}>Q. 생리시 관계를 하면 임신이 되지 않는다?</div>
+                            <div className={'font-semibold'}>Q. {quizQuestions ? quizQuestions[0].content : ''}</div>
                             <div className={'flex gap-x-4'}>
-                                <button className={'p-6 w-full bg-red-200 rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>X</button>
-                                <button className={'p-6 w-full bg-blue-200 rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>O</button>
+                                <button
+                                    onClick={()=>{
+                                        setIsQuizCardClicked(!isQuizCardClicked)
+                                        setIsClickedAnswer(false)
+                                    }}
+                                    className={'p-6 w-full bg-[#FFE8DE] rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>X</button>
+                                <button
+                                    onClick={()=>{
+                                        setIsQuizCardClicked(!isQuizCardClicked)
+                                        setIsClickedAnswer(true)
+                                    }}
+                                    className={'p-6 w-full bg-[#D8EAFF] rounded-[24px] text-[#3C3C3C] text-[30px] shadow-md'}>O</button>
                             </div>
                         </div>
                     </div>
@@ -52,12 +74,12 @@ const Home = () => {
                             </button>
                         </div>
                         {/* content */}
-                        <ArticlePost />
+                        <ArticlePost articleId={article? article.articleId : 1} content={article? article.content : ''} title={article? article.title : ''} likeCount={article? article.likeCount : 0} viewCount={article? article.viewCount : 0} imageUrl={article? article.imageUrl : ''}/>
                     </div>
                 </div>
                 <Navbar></Navbar>
             </div>
-        </>
+        </div>
     )
 }
 export default Home;
