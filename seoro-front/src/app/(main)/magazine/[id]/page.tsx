@@ -1,25 +1,56 @@
 'use client';
 
 import * as React from "react";
-import {SVGProps, useState} from "react";
+import {SVGProps, useEffect, useState} from "react";
 import Header from "@/components/magazine/Header";
 import Image from "next/image";
 import CommentInput from "@/components/magazine/CommentInput";
-import Commnet from "@/components/magazine/Commnet";
+import Comment from "@/components/magazine/Comment";
+import {useParams} from "next/navigation";
+import useGetArticleDetail from "@/lib/hooks/useGetArticleDetail";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {userInfoAtom} from "@/recoil/atom";
+import CommentMoreOptionModal from "@/components/magazine/CommentMoreOptionModal";
+import {deleteCommentIdAtom} from "@/recoil/magazine/atom";
 
 const ArticleDetail = () => {
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(false);
+    const [isCommentMoreOptionModalOpen, setIsCommentMoreOptionModalOpen] = useState(false);
+    const [deleteCommentId, setDeleteCommentId] = useRecoilState(deleteCommentIdAtom);
+    const userInfo = useRecoilValue(userInfoAtom);
+    const query = useParams();
+
+    const {article} = useGetArticleDetail(query.id);
+
+    const formatDate = (dateString: string | undefined) => {
+        const date = new Date(dateString ? dateString : 0);
+
+        // 연, 월, 일 추출
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1 필요
+        const day = String(date.getDate()).padStart(2, '0');
+
+        // 원하는 형식으로 변환
+        return `${year}.${month}.${day}`
+    }
 
     return (
         <div className={'relative min-h-screen'}>
+            {isCommentMoreOptionModalOpen ?
+                <CommentMoreOptionModal
+                    commentId={deleteCommentId}
+                    articleId={query.id}
+                    setIsCommentMoreOptionModalOpen={setIsCommentMoreOptionModalOpen}
+                    isCommentMoreOptionModalOpen={isCommentMoreOptionModalOpen}/>
+                : null}
             <Header title={'Magazine'}></Header>
             <div className={'flex flex-col gap-y-4 px-5 py-4'}>
                 {/*  title, date, writer */}
                 <div className={'flex justify-between items-start'}>
-                    <div className={'text-[20px] text-[#54515F] font-semibold'}>여성의 월경전 왜 예민할까?</div>
+                    <div className={'text-[20px] text-[#54515F] font-semibold'}>{article?.title}</div>
                     <div className={'flex flex-col items-end text-[14px] text-[#54515F] mt-1'}>
-                        <div>2024.05.05</div>
-                        <div>시아</div>
+                        <div>{formatDate(article?.createdAt)}</div>
+                        <div>{article?.user.username}</div>
                     </div>
                 </div>
 
@@ -27,18 +58,13 @@ const ArticleDetail = () => {
                 <div className={'flex flex-col gap-y-4'}>
                     {/*Image*/}
                     <div className={'relative w-full h-[200px]'}>
-                        <Image src={'/post.png'} alt={'/post.png'} className={'object-cover'} fill></Image>
+                        {article?.imageUrl
+                            ? <Image src={article?.imageUrl} alt={'/post.png'} className={'object-cover'} fill></Image>
+                            : null
+                        }
                     </div>
                     {/*content*/}
-                    <div className={'text-[16px]'}>
-                        성인 여성 중 본인의 생리주기나 . 그주기에 따른 임신 가능성에 대해 모르는 이가 적지 않습니다.
-                        임신은 물론 피임을 위해서라면 본인의 생리주기와 임신기간 정도는 알아두는 것이 바람직해요.
-
-                        하이닥 산부인과 상담의사 이민아 원장(닥터예스팀산부인과의원)은 “본인의 생리주가와 배란기를 통해 임신 가능성이 높은 기간을 예측할 수 있다면 피임에 도움이 될 수 있다”고
-                        말했습니다.
-
-                        다만 “예측과 가능성일 뿐, 이에 의존하는 피임법은 실패 확률이 높다”고 경고하고 있어요.
-                    </div>
+                    <div className={'text-[16px] break-words overflow-wrap break-word'}>{article?.content}</div>
                 </div>
 
                 {/* like, comment */}
@@ -46,11 +72,11 @@ const ArticleDetail = () => {
                     <div className={'flex gap-x-2'}>
                         <div className={'flex gap-x-1 text-[12px] text-[#727375]'}>
                             <div>관심</div>
-                            <div>3</div>
+                            <div>{article?.viewCount}</div>
                         </div>
                         <div className={'flex gap-x-1 text-[12px] text-[#727375]'}>
-                            <div>댓글</div>
-                            <div>3</div>
+                            <div>좋아요</div>
+                            <div>{article?.likeCount}</div>
                         </div>
                     </div>
                     <button
@@ -66,13 +92,25 @@ const ArticleDetail = () => {
             {/* comment */}
 
             <div className={'flex flex-col gap-y-[48px] px-5 py-4'}>
-                <Commnet />
-                <Commnet />
-                <Commnet />
-                <Commnet />
+                {article?.comments.length !== 0 ? article?.comments.map((comment, index)=>{
+                    return (
+                        <Comment
+                            key={index}
+                            commentId={comment.commentId}
+                            content={comment.content}
+                            createAt={comment.createdAt}
+                            profileImageUrl={comment.user.profileImageUrl}
+                            loginUserId={userInfo.userId}
+                            writerId={comment.user.userId}
+                            setDeleteCommentId={setDeleteCommentId}
+                            isCommentMoreOptionModalOpen={isCommentMoreOptionModalOpen}
+                            setIsCommentMoreOptionModalOpen={setIsCommentMoreOptionModalOpen}
+                            nickName={comment.user.nickName}/>
+                    )
+                }):null}
             </div>
             <div className={'h-[80px]'}/>
-            <CommentInput />
+            <CommentInput articleId={query.id} userId={userInfo.userId} />
         </div>
     );
 }

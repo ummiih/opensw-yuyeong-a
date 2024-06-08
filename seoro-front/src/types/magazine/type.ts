@@ -13,6 +13,11 @@ export interface ArticleType {
     modifiedAt: string;
 }
 
+export interface CommentPostType {
+    userId: number;
+    content: string;
+}
+
 export interface UserType {
     userId: number;
     username: string;
