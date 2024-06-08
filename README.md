@@ -31,19 +31,13 @@ https://github.com/ummiih/opensw-yuyeonga/assets/156565796/4126ee42-0ec1-447c-8f
 ### 퀴즈
 https://github.com/ummiih/opensw-yuyeonga/assets/156565796/f5588bb5-985c-4324-a5f2-db0d7d2d59e5
 
-
-
-
-
-
-
-# front
+# front Build
 ```
 npm i
 npm run dev
 ```
 
-# Back
+# Back Build
 ```
 SeoroApplication.kt 실행
 ```
