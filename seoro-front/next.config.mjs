@@ -1,3 +1,7 @@
+// next.config.mjs
 
-const nextConfig = {
-};
+export default {
+    images: {
+        domains: ['storage.googleapis.com'],
+    },
+}

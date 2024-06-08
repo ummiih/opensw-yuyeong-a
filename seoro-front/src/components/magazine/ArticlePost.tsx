@@ -4,42 +4,44 @@ import Image from "next/image";
 import { FiHeart } from "react-icons/fi";
 import * as React from "react";
 import type { SVGProps } from "react";
-import { FiMessageCircle } from "react-icons/fi";
+import { AiOutlineEye } from "react-icons/ai";
 import {useRouter} from "next/navigation";
 
-const ArticlePost = () => {
+interface Props {
+    articleId: number;
+    title: string;
+    content: string;
+    likeCount: number;
+    viewCount: number;
+    imageUrl: string;
+}
+
+const ArticlePost = (props: Props) => {
+    const {articleId, title, content, likeCount, viewCount, imageUrl} = props;
     const router = useRouter();
     return (
         <div
             onClick={() => {
-                router.push('/magazine/1')
+                router.push(`/magazine/${articleId}`)
             }}
             className={'flex flex-col px-5 py-4 bg-white rounded-[20px] shadow-md'}>
             <div className={'flex flex-col gap-y-2'}>
-                <div className={'text-[16px] font-semibold text-black'}>생리중 예민한 이유는?...</div>
-                <div className={'flex gap-x-3'}>
+                <div className={'text-[16px] font-semibold text-black'}>{title}</div>
+                <div className={'flex justify-between gap-x-3'}>
                     <div className={'flex flex-col'}>
-                        <div className={'text-[14px] text-[#727375]'}>
-                            생리 기간만 다가오면 유독 짜증이
-                        </div>
-                        <div className={'text-[14px] text-[#727375] truncate'}>
-                            예민하다면 월경전 증후군 때문이에요.
-                        </div>
-                        <div className={'text-[14px] text-[#727375] truncate'}>
-                             월경전 증후군이란 보통 호르몬의...
-                        </div>
+                        <div>{content}</div>
                     </div>
-                    <Image src={'/post.png'} alt={'/post.png'} width={100} height={80}/>
+                    <Image src={imageUrl} alt={imageUrl} width={100} height={80}/>
                 </div>
             </div>
             <div className={'flex gap-x-2'}>
                 <div className={'flex gap-x-1 items-center'}>
                     <FiHeart className={'text-[#727375]'} size={13}/>
-                    <div className={'text-[#727375] text-[12px]'}>3</div>
+                    <div className={'text-[#727375] text-[12px]'}>{likeCount}</div>
                 </div>
                 <div className={'flex gap-x-1 items-center'}>
-                    <FiMessageCircle className={'text-[#727375]'} size={13}/>
-                    <div className={'text-[#727375] text-[12px]'}>3</div>
+                    <AiOutlineEye className={'text-[#727375]'} size={18}/>
+                    <div className={'text-[#727375] text-[12px]'}>{viewCount}</div>
                 </div>
             </div>
         </div>
