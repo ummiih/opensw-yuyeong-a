@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = ["http://localhost:3000"])
 class ArticleApi(
     private val articleService: ArticleService
 ) {

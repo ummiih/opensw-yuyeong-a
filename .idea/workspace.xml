@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f57db325-9600-46a2-93b9-4ee356560006" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/ArticleApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/ArticleApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/QuestionApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/QuestionApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/QuizApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/QuizApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/UserApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Seoro-back/src/main/kotlin/com/cbnu/seoro/api/UserApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seoro-back/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Seoro-back/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seoro-front/src/app/(main)/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/seoro-front/src/app/(main)/home/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seoro-front/src/app/(main)/magazine/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/seoro-front/src/app/(main)/magazine/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seoro-front/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/seoro-front/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seoro-front/src/lib/api/magazine/magazine.ts" beforeDir="false" afterPath="$PROJECT_DIR$/seoro-front/src/lib/api/magazine/magazine.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seoro-front/src/recoil/atom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/seoro-front/src/recoil/atom.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2hb5enfQg9iQiPQmeHgMw3MNE4V" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/likeCount",
+    "last_opened_file_path": "/Users/hwang-yulim/Documents/GitHub/opensw-yuyeong-a/opensw-yuyeonga",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f57db325-9600-46a2-93b9-4ee356560006" name="Changes" comment="" />
+      <created>1717850033195</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717850033195</updated>
+      <workItem from="1717850034431" duration="32000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
