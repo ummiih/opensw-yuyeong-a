@@ -1,14 +1,18 @@
 'use client';
 import {useRouter} from "next/navigation";
-import {FormEvent, useRef, useState} from "react";
+import {FormEvent, useEffect, useRef, useState} from "react";
 import {postUserSignUp} from "@/lib/api/onboarding/onboarding";
 import Image from "next/image";
 import * as React from "react";
+import {useRecoilState} from "recoil";
+import {userInfoAtom} from "@/recoil/atom";
+import {UserType} from "@/types/magazine/type";
 
 const SignUp = () => {
     const router = useRouter();
     const imgRef = useRef<HTMLInputElement>(null);
     const [uploadImage, setUploadImage] = useState();
+    const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
 
     // 이미지 미리보기 설정
     const handleImagePreview = async () => {
@@ -19,7 +23,6 @@ const SignUp = () => {
             setUploadImage(reader.result);
         };
     };
-
 
     // 폼 제출 핸들러
     const handleSubmit = async (e: FormEvent) => {
@@ -34,8 +37,6 @@ const SignUp = () => {
             password: e.target.password.value,
         };
 
-        console.log('nickname',e.target.nickname.value)
-
         formData.append(
             'signUpRequest',
             new Blob([JSON.stringify(json)], {
@@ -43,13 +44,21 @@ const SignUp = () => {
             }),
         );
 
-        // formData의 내용을 출력하는 코드
-        for (let [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
-
         try {
-            const response = await postUserSignUp(formData); // API 호출
+            await postUserSignUp(formData).then((response)=>{
+                setUserInfo((prevUser: UserType) => ({
+                    ...prevUser,
+                    userId: response.userId,
+                    username: response.username,
+                    nickName: response.nickName,
+                    password: response.password,
+                    profileImageUrl: response.profileImageUrl,
+                    createdAt: response.createdAt,
+                    modifiedAt: response.modifiedAt,
+                }));
+                router.push('/home')
+            }); // API 호출
+
         } catch (error) {
             console.error('폼 제출 중 오류 발생:', error);
         }
@@ -62,7 +71,7 @@ const SignUp = () => {
                 <div className="relative w-fit">
                     <div className="relative w-[100px] h-[100px] object-cover overflow-hidden rounded-full">
                         <Image
-                            alt={uploadImage ? uploadImage : '/profile.png'}
+                            alt={uploadImage ? uploadImage : 'k'}
                             src={
                                 uploadImage ? uploadImage : '/profile.png'
                             }
@@ -101,9 +110,7 @@ const SignUp = () => {
             </div>
 
             <button
-                onClick={async () => {
-                    router.push('/home')
-                }}
+                type={'submit'}
                 className={'mt-20 bg-[#8D8DC1] py-4 rounded-[12px] text-white'}>회원가입
             </button>
         </form>
